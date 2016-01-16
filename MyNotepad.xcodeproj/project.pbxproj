@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C748B6C1C4A74AB003614A0 /* ShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C748B6B1C4A74AB003614A0 /* ShowDetailViewController.m */; };
 		7CB070D71C4A0CD900091A58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB070D61C4A0CD900091A58 /* main.m */; };
 		7CB070DA1C4A0CD900091A58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB070D91C4A0CD900091A58 /* AppDelegate.m */; };
-		7CB070DD1C4A0CD900091A58 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB070DC1C4A0CD900091A58 /* ViewController.m */; };
 		7CB070E01C4A0CD900091A58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CB070DE1C4A0CD900091A58 /* Main.storyboard */; };
 		7CB070E21C4A0CD900091A58 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB070E11C4A0CD900091A58 /* Images.xcassets */; };
 		7CB070E51C4A0CD900091A58 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CB070E31C4A0CD900091A58 /* LaunchScreen.xib */; };
 		7CB070F11C4A0CD900091A58 /* MyNotepadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB070F01C4A0CD900091A58 /* MyNotepadTests.m */; };
+		7CB070FC1C4A0E1200091A58 /* MainScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB070FB1C4A0E1200091A58 /* MainScreenController.m */; };
+		7CB071021C4A121400091A58 /* AddNewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB071011C4A121400091A58 /* AddNewController.m */; };
+		7CB071051C4A287C00091A58 /* MyNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB071041C4A287C00091A58 /* MyNote.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +30,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C748B6A1C4A74AB003614A0 /* ShowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailViewController.h; sourceTree = "<group>"; };
+		7C748B6B1C4A74AB003614A0 /* ShowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailViewController.m; sourceTree = "<group>"; };
 		7CB070D11C4A0CD900091A58 /* MyNotepad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotepad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB070D51C4A0CD900091A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CB070D61C4A0CD900091A58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7CB070D81C4A0CD900091A58 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7CB070D91C4A0CD900091A58 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7CB070DB1C4A0CD900091A58 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7CB070DC1C4A0CD900091A58 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7CB070DF1C4A0CD900091A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CB070E11C4A0CD900091A58 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7CB070E41C4A0CD900091A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7CB070EA1C4A0CD900091A58 /* MyNotepadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyNotepadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB070EF1C4A0CD900091A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CB070F01C4A0CD900091A58 /* MyNotepadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyNotepadTests.m; sourceTree = "<group>"; };
+		7CB070FA1C4A0E1200091A58 /* MainScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScreenController.h; sourceTree = "<group>"; };
+		7CB070FB1C4A0E1200091A58 /* MainScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScreenController.m; sourceTree = "<group>"; };
+		7CB071001C4A121400091A58 /* AddNewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewController.h; sourceTree = "<group>"; };
+		7CB071011C4A121400091A58 /* AddNewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewController.m; sourceTree = "<group>"; };
+		7CB071031C4A287C00091A58 /* MyNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNote.h; sourceTree = "<group>"; };
+		7CB071041C4A287C00091A58 /* MyNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNote.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +92,17 @@
 			children = (
 				7CB070D81C4A0CD900091A58 /* AppDelegate.h */,
 				7CB070D91C4A0CD900091A58 /* AppDelegate.m */,
-				7CB070DB1C4A0CD900091A58 /* ViewController.h */,
-				7CB070DC1C4A0CD900091A58 /* ViewController.m */,
 				7CB070DE1C4A0CD900091A58 /* Main.storyboard */,
 				7CB070E11C4A0CD900091A58 /* Images.xcassets */,
 				7CB070E31C4A0CD900091A58 /* LaunchScreen.xib */,
+				7CB070FA1C4A0E1200091A58 /* MainScreenController.h */,
+				7CB070FB1C4A0E1200091A58 /* MainScreenController.m */,
+				7CB071001C4A121400091A58 /* AddNewController.h */,
+				7CB071011C4A121400091A58 /* AddNewController.m */,
+				7CB071031C4A287C00091A58 /* MyNote.h */,
+				7CB071041C4A287C00091A58 /* MyNote.m */,
+				7C748B6A1C4A74AB003614A0 /* ShowDetailViewController.h */,
+				7C748B6B1C4A74AB003614A0 /* ShowDetailViewController.m */,
 				7CB070D41C4A0CD900091A58 /* Supporting Files */,
 			);
 			path = MyNotepad;
@@ -219,8 +234,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CB070DD1C4A0CD900091A58 /* ViewController.m in Sources */,
+				7CB071051C4A287C00091A58 /* MyNote.m in Sources */,
+				7CB071021C4A121400091A58 /* AddNewController.m in Sources */,
 				7CB070DA1C4A0CD900091A58 /* AppDelegate.m in Sources */,
+				7CB070FC1C4A0E1200091A58 /* MainScreenController.m in Sources */,
+				7C748B6C1C4A74AB003614A0 /* ShowDetailViewController.m in Sources */,
 				7CB070D71C4A0CD900091A58 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +436,7 @@
 				7CB070F61C4A0CD900091A58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7CB070F71C4A0CD900091A58 /* Build configuration list for PBXNativeTarget "MyNotepadTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +445,7 @@
 				7CB070F91C4A0CD900091A58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

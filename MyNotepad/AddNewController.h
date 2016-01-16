@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AddNewController.h
 //  MyNotepad
 //
 //  Created by nju on 16/1/16.
@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyNote.h"
 
-@interface ViewController : UIViewController
+@interface AddNewController : UIViewController
 
+@property MyNote *note;
 
 @end
-
