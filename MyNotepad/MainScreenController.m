@@ -10,6 +10,13 @@
 
 @interface MainScreenController ()
 
+@property NSInteger selected;
+@property BOOL isSelected;
+@property NSInteger deleteSelected;
+@property UITextField *addNewSubject;
+@property BOOL isNewTitle;
+@property BOOL isLongPressed;
+
 @end
 
 @implementation MainScreenController
@@ -22,6 +29,10 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    _isSelected = false;
+    _isNewTitle = false;
+    _isLongPressed = false;
     
     if(self.notes == nil) {
         self.notes = [[NSMutableArray alloc] init];
@@ -40,6 +51,14 @@
             }
         }
     }
+    
+    //设置长按删除日志的事件
+    UILongPressGestureRecognizer *longRecognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPress:)];
+    //设置长按至少1秒才算长按事件
+    longRecognizer.minimumPressDuration = 1.0;
+    [self.view addGestureRecognizer:longRecognizer];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,7 +81,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *identifier = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     
     UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"note"];
     
@@ -110,16 +128,69 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UINavigationController *destVC = (UINavigationController *)[segue destinationViewController];
+    if(self.notes.count != 0 && _isSelected) {
+        ((ShowDetailViewController *)(destVC.topViewController)).showNote = (MyNote *)[self.notes objectAtIndexedSubscript:(self.notes.count - 1 - _selected)];
+        _isSelected = false;
+    } else if([destVC.topViewController isKindOfClass:[AddNewController class]]) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"新建笔记"
+                                                        message:@"请输入新笔记的标题"
+                                                       delegate:self
+                                              cancelButtonTitle:@"默认标题"
+                                              otherButtonTitles:@"确认标题", nil];
+        // 基本输入框，显示实际输入的内容
+        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        //设置输入框的键盘类型
+        _addNewSubject = [alert textFieldAtIndex:0];
+        
+        [alert show];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    _selected = indexPath.row;
+    _isSelected = true;
     [self performSegueWithIdentifier:@"showDetail" sender:self];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0 && !_isLongPressed) {
+        _isNewTitle = false;
+    }else if(buttonIndex == 1 && !_isLongPressed){
+        _isNewTitle = true;
+    } else if(_isLongPressed) {
+        if(buttonIndex == 0) {
+            //取消删除
+        } else {
+            //确定删除
+            
+            MyNote *note = [self.notes objectAtIndexedSubscript:_deleteSelected];
+            NSString *pathDocument = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES)objectAtIndexedSubscript:0];
+            NSString *saveDir = [NSString stringWithFormat:@"%@/notes",pathDocument];
+            NSString *filePath = [NSString stringWithFormat:@"%@/%@.archiver", saveDir, note.createDate];
+            if([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+                [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+
+            
+            [self.notes removeObjectAtIndex:_deleteSelected];
+            
+            
+            [self.tableView reloadData];
+        }
+        
+        _isLongPressed = false;
+    }
 }
 
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     AddNewController* source = [segue sourceViewController];
     MyNote *note = source.note;
+    if(_isNewTitle) {
+        note.subject = _addNewSubject.text;
+    } else {
+        note.subject = @"新建笔记";
+    }
     if (note != nil) {
         [self.notes addObject:note];
         [self.tableView reloadData];
@@ -141,6 +212,19 @@
     }
 }
 
+- (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer {
+    CGPoint p = [gestureRecognizer locationInView:self.view];
+    NSIndexPath *indexPath = [(UITableView *)self.view indexPathForRowAtPoint: p];
+    _deleteSelected = indexPath.row;
+    if(self.notes.count != 0) {
+        _deleteSelected = self.notes.count - 1 - _deleteSelected;
+    }
+    if(gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        UIAlertView *deletePrompt = [[UIAlertView alloc] initWithTitle:@"删除笔记" message:@"你确定要删除这条信息吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        _isLongPressed = true;
+        [deletePrompt show];
+    }
+}
 
 
 

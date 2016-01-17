@@ -49,9 +49,35 @@
                     <view key="view" contentMode="scaleToFill" id="DZi-co-edB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCS-PB-c3a">
+                                <rect key="frame" x="30" y="138" width="543" height="442"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Zd-vr-ZGo">
+                                <rect key="frame" x="30" y="85" width="543" height="37"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HCS-PB-c3a" firstAttribute="leading" secondItem="DZi-co-edB" secondAttribute="leadingMargin" constant="14" id="6oh-D8-JWK"/>
+                            <constraint firstItem="2Zd-vr-ZGo" firstAttribute="top" secondItem="mAo-JG-61D" secondAttribute="bottom" constant="21" id="glu-wn-v3P"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HCS-PB-c3a" secondAttribute="trailing" constant="11" id="iww-cs-gUw"/>
+                            <constraint firstItem="Jqd-zt-hFE" firstAttribute="top" secondItem="HCS-PB-c3a" secondAttribute="bottom" constant="20" id="pde-rT-tuO"/>
+                            <constraint firstItem="HCS-PB-c3a" firstAttribute="top" secondItem="2Zd-vr-ZGo" secondAttribute="bottom" constant="16" id="pun-jV-tP9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Zd-vr-ZGo" secondAttribute="trailing" constant="11" id="w2H-Tb-zkM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BrW-0f-TRJ"/>
+                    <connections>
+                        <outlet property="contentDisplay" destination="HCS-PB-c3a" id="dg0-L0-gra"/>
+                        <outlet property="createDateDisplay" destination="2Zd-vr-ZGo" id="q1z-Mt-hwY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VbJ-aQ-fpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -122,43 +148,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qAH-Uf-Rfw">
-                                <rect key="frame" x="16" y="91" width="563" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFJ-kz-YoP">
-                                <rect key="frame" x="16" y="134" width="563" height="439"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dFJ-kz-YoP">
+                                <rect key="frame" x="16" y="169" width="568" height="404"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </textView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wCU-v5-39r">
+                                <rect key="frame" x="223" y="90" width="155" height="29"/>
+                                <segments>
+                                    <segment title="文字输入"/>
+                                    <segment title="语音输入"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeInputMode:" destination="8kc-R8-8zI" eventType="valueChanged" id="RFy-bT-y7d"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n09-yc-oOW">
+                                <rect key="frame" x="269" y="131" width="72" height="30"/>
+                                <state key="normal" title="启动听写">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startListening:" destination="8kc-R8-8zI" eventType="touchUpInside" id="Ec5-W6-u5R"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="qAH-Uf-Rfw" secondAttribute="trailing" constant="5" id="6sf-ME-rxm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dFJ-kz-YoP" secondAttribute="trailing" constant="5" id="7Qj-Qd-d2S"/>
-                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="leading" secondItem="mXg-6r-47d" secondAttribute="leadingMargin" id="9CE-mV-5tB"/>
-                            <constraint firstItem="qAH-Uf-Rfw" firstAttribute="top" secondItem="buV-ax-OW8" secondAttribute="bottom" constant="27" id="K0W-H9-YAw"/>
-                            <constraint firstItem="qAH-Uf-Rfw" firstAttribute="leading" secondItem="mXg-6r-47d" secondAttribute="leadingMargin" id="okl-kv-yCH"/>
-                            <constraint firstItem="1aZ-Wy-rDS" firstAttribute="top" secondItem="dFJ-kz-YoP" secondAttribute="bottom" constant="27" id="rGf-ki-juH"/>
-                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="top" secondItem="qAH-Uf-Rfw" secondAttribute="bottom" constant="13" id="tpG-S8-wMK"/>
+                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="top" secondItem="n09-yc-oOW" secondAttribute="bottom" constant="8" id="ATh-Hg-Ktt"/>
+                            <constraint firstAttribute="centerX" secondItem="n09-yc-oOW" secondAttribute="centerX" constant="-5" id="H5j-sA-RNo"/>
+                            <constraint firstItem="1aZ-Wy-rDS" firstAttribute="top" secondItem="dFJ-kz-YoP" secondAttribute="bottom" constant="27" id="YQ8-H5-y1p"/>
+                            <constraint firstAttribute="centerX" secondItem="wCU-v5-39r" secondAttribute="centerX" id="YvV-08-VZg"/>
+                            <constraint firstItem="wCU-v5-39r" firstAttribute="top" secondItem="buV-ax-OW8" secondAttribute="bottom" constant="43" id="bUT-Kr-ai6"/>
+                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="top" secondItem="n09-yc-oOW" secondAttribute="bottom" constant="8" id="ch1-5F-ysw"/>
+                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="leading" secondItem="mXg-6r-47d" secondAttribute="leadingMargin" id="haQ-wQ-DAC"/>
+                            <constraint firstItem="n09-yc-oOW" firstAttribute="top" secondItem="wCU-v5-39r" secondAttribute="bottom" constant="13" id="iW1-30-HFM"/>
+                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="trailing" secondItem="mXg-6r-47d" secondAttribute="trailingMargin" id="yGC-sk-QCb"/>
+                            <constraint firstItem="n09-yc-oOW" firstAttribute="top" secondItem="wCU-v5-39r" secondAttribute="bottom" constant="13" id="yHl-TI-Bpq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="trT-tr-cQg">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="g11-zf-yx0">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="g11-zf-yx0">
                             <connections>
                                 <segue destination="Wn4-Py-wqP" kind="unwind" unwindAction="unwindToList:" id="bFu-A2-Dnr"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="MN6-h8-HKq">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="MN6-h8-HKq">
                             <connections>
                                 <segue destination="Wn4-Py-wqP" kind="unwind" unwindAction="unwindToList:" id="QKP-PT-3Gx"/>
                             </connections>
@@ -167,8 +204,9 @@
                     <connections>
                         <outlet property="cancelButton" destination="g11-zf-yx0" id="7ap-sF-96W"/>
                         <outlet property="doneButton" destination="MN6-h8-HKq" id="dyJ-8B-vV9"/>
+                        <outlet property="inputMode" destination="wCU-v5-39r" id="T1z-di-pke"/>
                         <outlet property="noteContent" destination="dFJ-kz-YoP" id="F9g-e8-37h"/>
-                        <outlet property="noteSubject" destination="qAH-Uf-Rfw" id="OjA-Tf-ACT"/>
+                        <outlet property="startListen" destination="n09-yc-oOW" id="kCZ-Z3-KuB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdH-ui-G4X" userLabel="First Responder" sceneMemberID="firstResponder"/>

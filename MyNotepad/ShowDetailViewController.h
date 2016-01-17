@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "MyNote.h"
 
 @interface ShowDetailViewController : UIViewController
+
+@property MyNote *showNote;
+@property (weak, nonatomic) IBOutlet UITextView *contentDisplay;
+@property (weak, nonatomic) IBOutlet UITextView *createDateDisplay;
+
+
 
 @end

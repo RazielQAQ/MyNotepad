@@ -44,7 +44,7 @@
     _sampleRate = @"16000";
     _language = CHINESE;
     _accent = PUTONGHUA;
-    _haveView = NO;//默认是不dai界面的
+    _haveView = NO;//默认是不带界面的
     _accentNickName = [[NSArray alloc] initWithObjects:@"粤语",@"普通话",@"河南话",@"英文", nil];
     
 }

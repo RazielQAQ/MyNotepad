@@ -16,7 +16,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    if(self.showNote != nil) {
+        self.title = self.showNote.subject;
+        NSDateFormatter *ndf = [[NSDateFormatter alloc]init];
+        [ndf setDateFormat:@"yyyy年MM月dd日 HH:mm:ss"];
+        NSString *time = [ndf stringFromDate:self.showNote.createDate];
+        
+        //显示选中笔记的详细信息
+        self.createDateDisplay.text = time;
+        self.contentDisplay.text = self.showNote.content;
+        
+        self.createDateDisplay.editable = false;
+        self.contentDisplay.editable = false;
+        
+        self.createDateDisplay.textAlignment = NSTextAlignmentCenter;
+        
+               
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

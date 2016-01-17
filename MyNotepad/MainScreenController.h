@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AddNewController.h"
 #import "MyNote.h"
+#import "ShowDetailViewController.h"
 
 @interface MainScreenController : UITableViewController
 
