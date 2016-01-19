@@ -163,6 +163,7 @@
         CGFloat height = isPortrait ? keyboardFrame.size.height : keyboardFrame.size.width;
         
         // adjust the constraint constant to include the keyboard's height
+        self.constraintToAdjust.constant = 0;
         self.constraintToAdjust.constant += height;
     }
     else {
