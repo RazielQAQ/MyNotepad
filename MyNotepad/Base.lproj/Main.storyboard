@@ -36,7 +36,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGf-sd-lLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="-257"/>
+            <point key="canvasLocation" x="118" y="-256.99999999999994"/>
         </scene>
         <!--Show Detail View Controller-->
         <scene sceneID="4Z5-6B-Vdu">
@@ -81,9 +81,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VbJ-aQ-fpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="-257"/>
+            <point key="canvasLocation" x="1571.25" y="-257.74647887323943"/>
         </scene>
-        <!--Main Screen Controller-->
+        <!--我的笔记本-->
         <scene sceneID="98r-by-1GI">
             <objects>
                 <tableViewController id="Tcq-9G-ZrO" customClass="MainScreenController" sceneMemberID="viewController">
@@ -97,6 +97,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nro-nR-gcN" id="CLi-QW-ia0">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Vmn-b5-atL" kind="show" identifier="showDetail" id="H4f-uJ-tq1"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -104,39 +107,37 @@
                             <outlet property="delegate" destination="Tcq-9G-ZrO" id="Yds-ZZ-SaK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="W0I-T5-GGN">
+                    <navigationItem key="navigationItem" title="我的笔记本" id="W0I-T5-GGN">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0yI-8z-gfe">
                             <connections>
-                                <segue destination="o3g-KP-SEK" kind="show" id="L70-2v-ZCN"/>
+                                <segue destination="o3g-KP-SEK" kind="show" id="bY3-Uf-fjE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="Vmn-b5-atL" kind="show" identifier="showDetail" id="tdP-Ry-Qbd"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fu-MF-YQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Wn4-Py-wqP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="637" y="413"/>
+            <point key="canvasLocation" x="637" y="412.99999999999994"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BK5-RF-s3T">
             <objects>
                 <navigationController id="o3g-KP-SEK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sLU-uh-HRZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="06G-fl-Drf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="8kc-R8-8zI" kind="relationship" relationship="rootViewController" id="AaB-To-g2i"/>
+                        <segue destination="8kc-R8-8zI" kind="relationship" relationship="rootViewController" id="LdA-rT-x9o"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYs-II-AK7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-92" y="1219"/>
         </scene>
-        <!--Add New Controller-->
+        <!--新建笔记-->
         <scene sceneID="d9u-Yz-wRC">
             <objects>
                 <viewController id="8kc-R8-8zI" customClass="AddNewController" sceneMemberID="viewController">
@@ -149,11 +150,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dFJ-kz-YoP">
-                                <rect key="frame" x="16" y="169" width="568" height="404"/>
+                                <rect key="frame" x="0.0" y="180" width="600" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8kc-R8-8zI" id="JRu-Kr-zdi"/>
+                                </connections>
                             </textView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wCU-v5-39r">
                                 <rect key="frame" x="223" y="90" width="155" height="29"/>
@@ -177,19 +181,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="top" secondItem="n09-yc-oOW" secondAttribute="bottom" constant="8" id="ATh-Hg-Ktt"/>
+                            <constraint firstItem="1aZ-Wy-rDS" firstAttribute="top" secondItem="dFJ-kz-YoP" secondAttribute="bottom" id="AsW-v8-Nvf"/>
                             <constraint firstAttribute="centerX" secondItem="n09-yc-oOW" secondAttribute="centerX" constant="-5" id="H5j-sA-RNo"/>
-                            <constraint firstItem="1aZ-Wy-rDS" firstAttribute="top" secondItem="dFJ-kz-YoP" secondAttribute="bottom" constant="27" id="YQ8-H5-y1p"/>
                             <constraint firstAttribute="centerX" secondItem="wCU-v5-39r" secondAttribute="centerX" id="YvV-08-VZg"/>
                             <constraint firstItem="wCU-v5-39r" firstAttribute="top" secondItem="buV-ax-OW8" secondAttribute="bottom" constant="43" id="bUT-Kr-ai6"/>
-                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="top" secondItem="n09-yc-oOW" secondAttribute="bottom" constant="8" id="ch1-5F-ysw"/>
-                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="leading" secondItem="mXg-6r-47d" secondAttribute="leadingMargin" id="haQ-wQ-DAC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dFJ-kz-YoP" secondAttribute="trailing" constant="-16" id="gfG-0T-pdS"/>
                             <constraint firstItem="n09-yc-oOW" firstAttribute="top" secondItem="wCU-v5-39r" secondAttribute="bottom" constant="13" id="iW1-30-HFM"/>
-                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="trailing" secondItem="mXg-6r-47d" secondAttribute="trailingMargin" id="yGC-sk-QCb"/>
+                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="leading" secondItem="mXg-6r-47d" secondAttribute="leadingMargin" constant="-16" id="lzt-wD-KMw"/>
+                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="top" secondItem="n09-yc-oOW" secondAttribute="bottom" constant="19" id="rf2-gk-ihZ"/>
                             <constraint firstItem="n09-yc-oOW" firstAttribute="top" secondItem="wCU-v5-39r" secondAttribute="bottom" constant="13" id="yHl-TI-Bpq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="trT-tr-cQg">
+                    <navigationItem key="navigationItem" title="新建笔记" id="trT-tr-cQg">
                         <barButtonItem key="leftBarButtonItem" title="取消" id="g11-zf-yx0">
                             <connections>
                                 <segue destination="Wn4-Py-wqP" kind="unwind" unwindAction="unwindToList:" id="bFu-A2-Dnr"/>
@@ -203,6 +206,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="g11-zf-yx0" id="7ap-sF-96W"/>
+                        <outlet property="constraintToAdjust" destination="AsW-v8-Nvf" id="rb3-mZ-jZg"/>
                         <outlet property="doneButton" destination="MN6-h8-HKq" id="dyJ-8B-vV9"/>
                         <outlet property="inputMode" destination="wCU-v5-39r" id="T1z-di-pke"/>
                         <outlet property="noteContent" destination="dFJ-kz-YoP" id="F9g-e8-37h"/>
@@ -211,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdH-ui-G4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="685" y="1219"/>
+            <point key="canvasLocation" x="773" y="1219"/>
         </scene>
     </scenes>
 </document>

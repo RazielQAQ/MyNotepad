@@ -20,10 +20,11 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *inputMode;
 @property (weak, nonatomic) IBOutlet UIButton *startListen;
-@property (nonatomic, strong) PopupView *popUpView;
 
 @property (nonatomic, strong) IFlySpeechRecognizer *iFlySpeechRecognizer;//不带界面的识别对象
 @property (nonatomic, strong) IFlyDataUploader *uploader;//数据上传对象
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintToAdjust;
 
 
 - (IBAction)changeInputMode:(id)sender;
@@ -39,9 +40,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"background.jpg"] ];
-    [self.noteContent.layer setCornerRadius:10];
     
     _startListen.hidden = true;
+    _noteContent.delegate = self;
 
     
     //点击空白处收回键盘
@@ -49,6 +50,156 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
     [self.view addGestureRecognizer:singleTap];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    // observe keyboard hide and show notifications to resize the text view appropriately
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    // start editing the UITextView (makes the keyboard appear when the application launches)
+    [_noteContent becomeFirstResponder];
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillChangeFrameNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+}
+
+
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self adjustSelection:_noteContent];
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)aTextView {
+    
+    // note: you can create the accessory view programmatically (in code), or from the storyboard
+//    if (self.textView.inputAccessoryView == nil) {
+//        
+//        self.textView.inputAccessoryView = self.accessoryView;  // use what's in the storyboard
+//    }
+//
+    return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)aTextView {
+    
+    [aTextView resignFirstResponder];
+       return YES;
+}
+
+- (void)adjustSelection:(UITextView *)textView {
+    
+    if ([textView respondsToSelector:@selector(textContainerInset)]) {
+        [textView layoutIfNeeded];
+        CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.end];
+        caretRect.size.height += textView.textContainerInset.bottom;
+        [textView scrollRectToVisible:caretRect animated:YES];
+    }
+    
+
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    
+    [self adjustSelection: _noteContent];
+}
+
+- (void)textViewDidChangeSelection:(UITextView *)textView {
+    
+    [self adjustSelection: _noteContent];
+}
+
+
+#pragma mark - Responding to keyboard events
+
+- (void)adjustTextViewByKeyboardState:(BOOL)showKeyboard keyboardInfo:(NSDictionary *)info {
+    
+    /*
+     Reduce the size of the text view so that it's not obscured by the keyboard.
+     Animate the resize so that it's in sync with the appearance of the keyboard.
+     */
+    
+    // transform the UIViewAnimationCurve to a UIViewAnimationOptions mask
+    UIViewAnimationCurve animationCurve = [info[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    if (animationCurve == UIViewAnimationCurveEaseIn) {
+        animationOptions |= UIViewAnimationOptionCurveEaseIn;
+    }
+    else if (animationCurve == UIViewAnimationCurveEaseInOut) {
+        animationOptions |= UIViewAnimationOptionCurveEaseInOut;
+    }
+    else if (animationCurve == UIViewAnimationCurveEaseOut) {
+        animationOptions |= UIViewAnimationOptionCurveEaseOut;
+    }
+    else if (animationCurve == UIViewAnimationCurveLinear) {
+        animationOptions |= UIViewAnimationOptionCurveLinear;
+    }
+    
+    [_noteContent setNeedsUpdateConstraints];
+    
+    if (showKeyboard) {
+        UIDeviceOrientation orientation = self.interfaceOrientation;
+        BOOL isPortrait = UIDeviceOrientationIsPortrait(orientation);
+        
+        NSValue *keyboardFrameVal = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+        CGRect keyboardFrame = [keyboardFrameVal CGRectValue];
+        CGFloat height = isPortrait ? keyboardFrame.size.height : keyboardFrame.size.width;
+        
+        // adjust the constraint constant to include the keyboard's height
+        self.constraintToAdjust.constant += height;
+    }
+    else {
+        self.constraintToAdjust.constant = 0;
+    }
+    
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
+        [self.view layoutIfNeeded];
+    } completion:nil];
+    
+    // now that the frame has changed, move to the selection or point of edit
+    NSRange selectedRange = _noteContent.selectedRange;
+    [_noteContent scrollRangeToVisible:selectedRange];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    
+    /*
+     Reduce the size of the text view so that it's not obscured by the keyboard.
+     Animate the resize so that it's in sync with the appearance of the keyboard.
+     */
+    
+    NSDictionary *userInfo = [notification userInfo];
+    [self adjustTextViewByKeyboardState:YES keyboardInfo:userInfo];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    
+    /*
+     Restore the size of the text view (fill self's view).
+     Animate the resize so that it's in sync with the disappearance of the keyboard.
+     */
+    
+    NSDictionary *userInfo = [notification userInfo];
+    [self adjustTextViewByKeyboardState:NO keyboardInfo:userInfo];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,20 +222,28 @@
     [self.view endEditing:YES];
 }
 
+//切换输入模式
 - (IBAction)changeInputMode:(id)sender {
     NSInteger selectedIndex = _inputMode.selectedSegmentIndex;
     //NSLog(@"输入模式：%ld",(long)selectedIndex);
     if(selectedIndex == 0) {
         _startListen.hidden = true;
+        [_noteContent becomeFirstResponder];
     } else {
         _startListen.hidden = false;
+        [self.view endEditing:YES];
+        [self.view makeToast:@"该模式需要网络连接，请确保您当前网络畅通"];
     }
 }
+
+
 
 //启动语音听写
 - (IBAction)startListening:(id)sender {
     [_noteContent resignFirstResponder];
     self.isCanceled = NO;
+    
+    
     
     if(_iFlySpeechRecognizer == nil)
     {
@@ -104,9 +263,22 @@
     
     [_iFlySpeechRecognizer setDelegate:self];
     
-    [_iFlySpeechRecognizer startListening];
     
+    
+    BOOL ret = [_iFlySpeechRecognizer startListening];
+    [CSToastManager setQueueEnabled:NO];
+    
+    
+    
+    if (ret) {
+        
+        
+    }else{
+        [self.view makeToast:@"启动识别服务失败，请稍后重试"];//可能是上次请求未结束，暂不支持多路并发
+    }
 }
+
+
 
 #pragma mark - IFlySpeechRecognizerDelegate
 /**
@@ -116,12 +288,12 @@
 - (void) onVolumeChanged: (int)volume
 {
     if (self.isCanceled) {
-        [_popUpView removeFromSuperview];
+        
         return;
     }
     
     NSString * vol = [NSString stringWithFormat:@"音量：%d",volume];
-    [_popUpView showText: vol];
+    [self.view makeToast: vol duration:0.5 position:CSToastPositionBottom];
 }
 
 
@@ -132,7 +304,7 @@
 - (void) onBeginOfSpeech
 {
     NSLog(@"onBeginOfSpeech");
-    [_popUpView showText: @"正在录音"];
+    [self.view makeToast: @"正在录音"];
 }
 
 /**
@@ -142,7 +314,7 @@
 {
     NSLog(@"onEndOfSpeech");
     
-    [_popUpView showText: @"停止录音"];
+    [self.view makeToast: @"停止录音"];
 }
 
 
@@ -173,7 +345,9 @@
         NSLog(@"%@",text);
     }
     
-    [_popUpView showText: text];
+    [self.view makeToast: text];
+    
+
     
     [_startListen setEnabled:YES];
 }
@@ -214,7 +388,7 @@
 
 -(void) showPopup
 {
-    [_popUpView showText: @"正在上传..."];
+    [self.view makeToast: @"正在上传..."];
 }
 
 #pragma mark - IFlyDataUploaderDelegate
@@ -228,10 +402,10 @@
     NSLog(@"%d",[error errorCode]);
     
     if ([error errorCode] == 0) {
-        [_popUpView showText: @"上传成功"];
+        [self.view makeToast: @"上传成功"];
     }
     else {
-        [_popUpView showText: [NSString stringWithFormat:@"上传失败，错误码:%d",error.errorCode]];
+        [self.view makeToast: [NSString stringWithFormat:@"上传失败，错误码:%d",error.errorCode]];
         
     }
     
@@ -246,9 +420,7 @@
 -(void)initRecognizer
 {
     NSLog(@"%s",__func__);
-    
-    
-    //单例模式，无UI的实例
+
     if (_iFlySpeechRecognizer == nil) {
         _iFlySpeechRecognizer = [IFlySpeechRecognizer sharedInstance];
         

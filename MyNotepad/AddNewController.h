@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MyNote.h"
 #import "iflyMSC/IFlyMSC.h"
-#include "PopupView.h"
+#include "UIView+Toast.h"
 
-@interface AddNewController : UIViewController<IFlySpeechRecognizerDelegate>
-
+@interface AddNewController : UIViewController<IFlySpeechRecognizerDelegate, UITextViewDelegate>
 @property MyNote *note;
 @property (nonatomic, assign) BOOL isCanceled;
 

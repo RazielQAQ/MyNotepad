@@ -11,7 +11,6 @@
 		7C69A1DA1C4BAA4900033CED /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C69A1D91C4BAA4900033CED /* iflyMSC.framework */; };
 		7C69A1DD1C4BADB600033CED /* ISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C69A1DC1C4BADB600033CED /* ISRDataHelper.m */; };
 		7C69A1E01C4BADC400033CED /* IATConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C69A1DF1C4BADC400033CED /* IATConfig.m */; };
-		7C69A1E31C4BB2ED00033CED /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C69A1E21C4BB2ED00033CED /* PopupView.m */; };
 		7C69A1E51C4BB7EA00033CED /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C69A1E41C4BB7EA00033CED /* libz.dylib */; };
 		7C69A1E71C4BB80700033CED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C69A1E61C4BB80700033CED /* CoreLocation.framework */; };
 		7C69A1E91C4BB80F00033CED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C69A1E81C4BB80F00033CED /* CoreTelephony.framework */; };
@@ -25,6 +24,7 @@
 		7C69A1F91C4BB85600033CED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C69A1F81C4BB85600033CED /* CoreGraphics.framework */; };
 		7C69A1FB1C4BB86D00033CED /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C69A1FA1C4BB86D00033CED /* libc++.dylib */; };
 		7C748B6C1C4A74AB003614A0 /* ShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C748B6B1C4A74AB003614A0 /* ShowDetailViewController.m */; };
+		7C76EFF21C4CD8EE0011E450 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C76EFF11C4CD8EE0011E450 /* UIView+Toast.m */; };
 		7CB070D71C4A0CD900091A58 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB070D61C4A0CD900091A58 /* main.m */; };
 		7CB070DA1C4A0CD900091A58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB070D91C4A0CD900091A58 /* AppDelegate.m */; };
 		7CB070E01C4A0CD900091A58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CB070DE1C4A0CD900091A58 /* Main.storyboard */; };
@@ -54,8 +54,6 @@
 		7C69A1DC1C4BADB600033CED /* ISRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISRDataHelper.m; sourceTree = "<group>"; };
 		7C69A1DE1C4BADBD00033CED /* IATConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IATConfig.h; sourceTree = "<group>"; };
 		7C69A1DF1C4BADC400033CED /* IATConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IATConfig.m; sourceTree = "<group>"; };
-		7C69A1E11C4BB2ED00033CED /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupView.h; sourceTree = "<group>"; };
-		7C69A1E21C4BB2ED00033CED /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupView.m; sourceTree = "<group>"; };
 		7C69A1E41C4BB7EA00033CED /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		7C69A1E61C4BB80700033CED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7C69A1E81C4BB80F00033CED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -70,6 +68,8 @@
 		7C69A1FA1C4BB86D00033CED /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		7C748B6A1C4A74AB003614A0 /* ShowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailViewController.h; sourceTree = "<group>"; };
 		7C748B6B1C4A74AB003614A0 /* ShowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailViewController.m; sourceTree = "<group>"; };
+		7C76EFF01C4CD8EE0011E450 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		7C76EFF11C4CD8EE0011E450 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		7CB070D11C4A0CD900091A58 /* MyNotepad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotepad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB070D51C4A0CD900091A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CB070D61C4A0CD900091A58 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -162,8 +162,8 @@
 		7CB070D31C4A0CD900091A58 /* MyNotepad */ = {
 			isa = PBXGroup;
 			children = (
-				7C69A1E11C4BB2ED00033CED /* PopupView.h */,
-				7C69A1E21C4BB2ED00033CED /* PopupView.m */,
+				7C76EFF01C4CD8EE0011E450 /* UIView+Toast.h */,
+				7C76EFF11C4CD8EE0011E450 /* UIView+Toast.m */,
 				7C69A1D51C4BA8CD00033CED /* Definition.h */,
 				7C69A1D31C4B7DD100033CED /* background.jpg */,
 				7CB070D81C4A0CD900091A58 /* AppDelegate.h */,
@@ -317,12 +317,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C69A1DD1C4BADB600033CED /* ISRDataHelper.m in Sources */,
+				7C76EFF21C4CD8EE0011E450 /* UIView+Toast.m in Sources */,
 				7CB071051C4A287C00091A58 /* MyNote.m in Sources */,
 				7C69A1E01C4BADC400033CED /* IATConfig.m in Sources */,
 				7CB071021C4A121400091A58 /* AddNewController.m in Sources */,
 				7CB070DA1C4A0CD900091A58 /* AppDelegate.m in Sources */,
 				7CB070FC1C4A0E1200091A58 /* MainScreenController.m in Sources */,
-				7C69A1E31C4BB2ED00033CED /* PopupView.m in Sources */,
 				7C748B6C1C4A74AB003614A0 /* ShowDetailViewController.m in Sources */,
 				7CB070D71C4A0CD900091A58 /* main.m in Sources */,
 			);

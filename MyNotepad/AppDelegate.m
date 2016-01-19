@@ -10,6 +10,7 @@
 #include "Definition.h"
 #import "iflyMSC/IFlyMSC.h"
 
+
 @interface AppDelegate ()
 
 @end
@@ -39,6 +40,8 @@
     //所有服务启动前，需要确保执行createUtility
     [IFlySpeechUtility createUtility:initString];
     
+    
+    //使用第三方库
     return YES;
 }
 

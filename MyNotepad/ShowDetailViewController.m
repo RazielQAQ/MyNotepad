@@ -30,9 +30,10 @@
         self.contentDisplay.editable = false;
         
         self.createDateDisplay.textAlignment = NSTextAlignmentCenter;
-        
                
     }
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
 }
 
