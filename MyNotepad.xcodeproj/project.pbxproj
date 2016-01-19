@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C69A1D41C4B7DD100033CED /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C69A1D31C4B7DD100033CED /* background.jpg */; };
+		7C65A86C1C4E2C0900621641 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C65A86B1C4E2C0900621641 /* LaunchScreen.xib */; };
+		7C65A8721C4E35F600621641 /* lalala.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C65A8711C4E35F600621641 /* lalala.png */; };
 		7C69A1DA1C4BAA4900033CED /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C69A1D91C4BAA4900033CED /* iflyMSC.framework */; };
 		7C69A1DD1C4BADB600033CED /* ISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C69A1DC1C4BADB600033CED /* ISRDataHelper.m */; };
 		7C69A1E01C4BADC400033CED /* IATConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C69A1DF1C4BADC400033CED /* IATConfig.m */; };
@@ -29,7 +30,6 @@
 		7CB070DA1C4A0CD900091A58 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB070D91C4A0CD900091A58 /* AppDelegate.m */; };
 		7CB070E01C4A0CD900091A58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CB070DE1C4A0CD900091A58 /* Main.storyboard */; };
 		7CB070E21C4A0CD900091A58 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB070E11C4A0CD900091A58 /* Images.xcassets */; };
-		7CB070E51C4A0CD900091A58 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CB070E31C4A0CD900091A58 /* LaunchScreen.xib */; };
 		7CB070F11C4A0CD900091A58 /* MyNotepadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB070F01C4A0CD900091A58 /* MyNotepadTests.m */; };
 		7CB070FC1C4A0E1200091A58 /* MainScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB070FB1C4A0E1200091A58 /* MainScreenController.m */; };
 		7CB071021C4A121400091A58 /* AddNewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB071011C4A121400091A58 /* AddNewController.m */; };
@@ -47,7 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7C69A1D31C4B7DD100033CED /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		7C65A86B1C4E2C0900621641 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		7C65A8711C4E35F600621641 /* lalala.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lalala.png; sourceTree = "<group>"; };
 		7C69A1D51C4BA8CD00033CED /* Definition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Definition.h; sourceTree = "<group>"; };
 		7C69A1D91C4BAA4900033CED /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		7C69A1DB1C4BADAF00033CED /* ISRDataHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISRDataHelper.h; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		7CB070D91C4A0CD900091A58 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7CB070DF1C4A0CD900091A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CB070E11C4A0CD900091A58 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7CB070E41C4A0CD900091A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7CB070EA1C4A0CD900091A58 /* MyNotepadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyNotepadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB070EF1C4A0CD900091A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CB070F01C4A0CD900091A58 /* MyNotepadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyNotepadTests.m; sourceTree = "<group>"; };
@@ -165,12 +165,12 @@
 				7C76EFF01C4CD8EE0011E450 /* UIView+Toast.h */,
 				7C76EFF11C4CD8EE0011E450 /* UIView+Toast.m */,
 				7C69A1D51C4BA8CD00033CED /* Definition.h */,
-				7C69A1D31C4B7DD100033CED /* background.jpg */,
+				7C65A8711C4E35F600621641 /* lalala.png */,
 				7CB070D81C4A0CD900091A58 /* AppDelegate.h */,
 				7CB070D91C4A0CD900091A58 /* AppDelegate.m */,
 				7CB070DE1C4A0CD900091A58 /* Main.storyboard */,
+				7C65A86B1C4E2C0900621641 /* LaunchScreen.xib */,
 				7CB070E11C4A0CD900091A58 /* Images.xcassets */,
-				7CB070E31C4A0CD900091A58 /* LaunchScreen.xib */,
 				7CB070FA1C4A0E1200091A58 /* MainScreenController.h */,
 				7CB070FB1C4A0E1200091A58 /* MainScreenController.m */,
 				7CB071001C4A121400091A58 /* AddNewController.h */,
@@ -296,8 +296,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CB070E01C4A0CD900091A58 /* Main.storyboard in Resources */,
-				7C69A1D41C4B7DD100033CED /* background.jpg in Resources */,
-				7CB070E51C4A0CD900091A58 /* LaunchScreen.xib in Resources */,
+				7C65A86C1C4E2C0900621641 /* LaunchScreen.xib in Resources */,
+				7C65A8721C4E35F600621641 /* lalala.png in Resources */,
 				7CB070E21C4A0CD900091A58 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,14 +353,6 @@
 				7CB070DF1C4A0CD900091A58 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7CB070E31C4A0CD900091A58 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7CB070E41C4A0CD900091A58 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -451,6 +443,8 @@
 		7CB070F51C4A0CD900091A58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,12 +454,15 @@
 				INFOPLIST_FILE = MyNotepad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		7CB070F61C4A0CD900091A58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -475,6 +472,7 @@
 				INFOPLIST_FILE = MyNotepad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

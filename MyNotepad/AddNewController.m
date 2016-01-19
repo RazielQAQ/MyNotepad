@@ -39,7 +39,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"background.jpg"] ];
     
     _startListen.hidden = true;
     _noteContent.delegate = self;
@@ -54,9 +53,10 @@
     
 }
 
+//加载成功后，对键盘的弹出和收回增加监听事件，使得输入区域的大小能够随之变化
 - (void)viewDidAppear:(BOOL)animated {
     
-    // observe keyboard hide and show notifications to resize the text view appropriately
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
@@ -65,10 +65,6 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    
-    // start editing the UITextView (makes the keyboard appear when the application launches)
-    [_noteContent becomeFirstResponder];
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -89,21 +85,16 @@
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)aTextView {
     
-    // note: you can create the accessory view programmatically (in code), or from the storyboard
-//    if (self.textView.inputAccessoryView == nil) {
-//        
-//        self.textView.inputAccessoryView = self.accessoryView;  // use what's in the storyboard
-//    }
-//
     return YES;
 }
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)aTextView {
     
     [aTextView resignFirstResponder];
-       return YES;
+    return YES;
 }
 
+//调整文本框的显示区域
 - (void)adjustSelection:(UITextView *)textView {
     
     if ([textView respondsToSelector:@selector(textContainerInset)]) {
@@ -132,11 +123,9 @@
 - (void)adjustTextViewByKeyboardState:(BOOL)showKeyboard keyboardInfo:(NSDictionary *)info {
     
     /*
-     Reduce the size of the text view so that it's not obscured by the keyboard.
-     Animate the resize so that it's in sync with the appearance of the keyboard.
+     当键盘出现的时候，减少文本框的高度用来实现自动翻滚的效果
      */
     
-    // transform the UIViewAnimationCurve to a UIViewAnimationOptions mask
     UIViewAnimationCurve animationCurve = [info[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
     UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
     if (animationCurve == UIViewAnimationCurveEaseIn) {
@@ -162,7 +151,7 @@
         CGRect keyboardFrame = [keyboardFrameVal CGRectValue];
         CGFloat height = isPortrait ? keyboardFrame.size.height : keyboardFrame.size.width;
         
-        // adjust the constraint constant to include the keyboard's height
+        //调整文本框高度
         self.constraintToAdjust.constant = 0;
         self.constraintToAdjust.constant += height;
     }
@@ -176,7 +165,6 @@
         [self.view layoutIfNeeded];
     } completion:nil];
     
-    // now that the frame has changed, move to the selection or point of edit
     NSRange selectedRange = _noteContent.selectedRange;
     [_noteContent scrollRangeToVisible:selectedRange];
 }
@@ -184,8 +172,7 @@
 - (void)keyboardWillShow:(NSNotification *)notification {
     
     /*
-     Reduce the size of the text view so that it's not obscured by the keyboard.
-     Animate the resize so that it's in sync with the appearance of the keyboard.
+     键盘出现事件，此时减少文本框高度
      */
     
     NSDictionary *userInfo = [notification userInfo];
@@ -195,8 +182,7 @@
 - (void)keyboardWillHide:(NSNotification *)notification {
     
     /*
-     Restore the size of the text view (fill self's view).
-     Animate the resize so that it's in sync with the disappearance of the keyboard.
+    键盘收回事件，此时将文本框恢复到原来的高度
      */
     
     NSDictionary *userInfo = [notification userInfo];
@@ -205,7 +191,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -214,8 +199,6 @@
     
     self.note = [[MyNote alloc] init];
     self.note.content = self.noteContent.text;
-    //NSLog(@"create Date :%@, last Modified: %@", self.note.createDate, self.note.lastModified);
-
 }
 
 //设置不为编辑模式，收回键盘

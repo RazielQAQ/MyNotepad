@@ -41,7 +41,6 @@
     [IFlySpeechUtility createUtility:initString];
     
     
-    //使用第三方库
     return YES;
 }
 

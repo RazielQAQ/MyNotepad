@@ -185,31 +185,33 @@
 
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
-    AddNewController* source = [segue sourceViewController];
-    MyNote *note = source.note;
-    if(_isNewTitle) {
-        note.subject = _addNewSubject.text;
-    } else {
-        note.subject = @"新建笔记";
-    }
-    if (note != nil) {
-        [self.notes addObject:note];
-        [self.tableView reloadData];
-        
-        //将note直接归档
-        NSString *pathDocument = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES)objectAtIndexedSubscript:0];
-        NSString *saveDir = [NSString stringWithFormat:@"%@/notes",pathDocument];
-        NSString *filePath = [NSString stringWithFormat:@"%@/%@.archiver", saveDir, note.createDate];
-        NSFileManager *fileManager = [[NSFileManager alloc]init];
-        
-        if(![[NSFileManager defaultManager]fileExistsAtPath:saveDir]) {
-            [fileManager createDirectoryAtPath:saveDir withIntermediateDirectories:YES attributes:nil error:nil];
+    if([[segue sourceViewController] isKindOfClass:[AddNewController class]]) {
+        AddNewController* source = [segue sourceViewController];
+        MyNote *note = source.note;
+        if(_isNewTitle) {
+            note.subject = _addNewSubject.text;
+        } else {
+            note.subject = @"新建笔记";
         }
-        
-        [NSKeyedArchiver archiveRootObject:note toFile:filePath];
-        //NSLog(@"%@, %d", filePath, success);
-        
-        
+        if (note != nil) {
+            [self.notes addObject:note];
+            [self.tableView reloadData];
+            
+            //将note直接归档
+            NSString *pathDocument = [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES)objectAtIndexedSubscript:0];
+            NSString *saveDir = [NSString stringWithFormat:@"%@/notes",pathDocument];
+            NSString *filePath = [NSString stringWithFormat:@"%@/%@.archiver", saveDir, note.createDate];
+            NSFileManager *fileManager = [[NSFileManager alloc]init];
+            
+            if(![[NSFileManager defaultManager]fileExistsAtPath:saveDir]) {
+                [fileManager createDirectoryAtPath:saveDir withIntermediateDirectories:YES attributes:nil error:nil];
+            }
+            
+            [NSKeyedArchiver archiveRootObject:note toFile:filePath];
+            //NSLog(@"%@, %d", filePath, success);
+            
+            
+        }
     }
 }
 

@@ -52,18 +52,18 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCS-PB-c3a">
                                 <rect key="frame" x="30" y="138" width="543" height="442"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.98058465790000005" blue="0.70722308860000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Zd-vr-ZGo">
                                 <rect key="frame" x="30" y="85" width="543" height="37"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.98058465790000005" blue="0.70722308860000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.99607843139999996" green="0.98058465790000005" blue="0.70722308860000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="HCS-PB-c3a" firstAttribute="leading" secondItem="DZi-co-edB" secondAttribute="leadingMargin" constant="14" id="6oh-D8-JWK"/>
                             <constraint firstItem="2Zd-vr-ZGo" firstAttribute="top" secondItem="mAo-JG-61D" secondAttribute="bottom" constant="21" id="glu-wn-v3P"/>
@@ -73,15 +73,22 @@
                             <constraint firstAttribute="trailingMargin" secondItem="2Zd-vr-ZGo" secondAttribute="trailing" constant="11" id="w2H-Tb-zkM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="BrW-0f-TRJ"/>
+                    <navigationItem key="navigationItem" id="BrW-0f-TRJ">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="kZm-xJ-HeB">
+                            <connections>
+                                <segue destination="EyS-un-Wci" kind="unwind" unwindAction="unwindToList:" id="UGk-GZ-wyU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentDisplay" destination="HCS-PB-c3a" id="dg0-L0-gra"/>
                         <outlet property="createDateDisplay" destination="2Zd-vr-ZGo" id="q1z-Mt-hwY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VbJ-aQ-fpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="EyS-un-Wci" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1571.25" y="-257.74647887323943"/>
+            <point key="canvasLocation" x="989" y="-251"/>
         </scene>
         <!--我的笔记本-->
         <scene sceneID="98r-by-1GI">
@@ -150,8 +157,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dFJ-kz-YoP">
-                                <rect key="frame" x="0.0" y="180" width="600" height="420"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="160" width="600" height="440"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.98058465790000005" blue="0.70722308860000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
@@ -159,8 +166,18 @@
                                     <outlet property="delegate" destination="8kc-R8-8zI" id="JRu-Kr-zdi"/>
                                 </connections>
                             </textView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wCU-v5-39r">
-                                <rect key="frame" x="223" y="90" width="155" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n09-yc-oOW">
+                                <rect key="frame" x="264" y="112" width="72" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="启动听写">
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startListening:" destination="8kc-R8-8zI" eventType="touchUpInside" id="Ec5-W6-u5R"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wCU-v5-39r">
+                                <rect key="frame" x="223" y="76" width="155" height="29"/>
                                 <segments>
                                     <segment title="文字输入"/>
                                     <segment title="语音输入"/>
@@ -169,27 +186,17 @@
                                     <action selector="changeInputMode:" destination="8kc-R8-8zI" eventType="valueChanged" id="RFy-bT-y7d"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n09-yc-oOW">
-                                <rect key="frame" x="269" y="131" width="72" height="30"/>
-                                <state key="normal" title="启动听写">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startListening:" destination="8kc-R8-8zI" eventType="touchUpInside" id="Ec5-W6-u5R"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.99607843139999996" green="0.98058465790000005" blue="0.70722308860000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="1aZ-Wy-rDS" firstAttribute="top" secondItem="dFJ-kz-YoP" secondAttribute="bottom" id="AsW-v8-Nvf"/>
                             <constraint firstAttribute="centerX" secondItem="n09-yc-oOW" secondAttribute="centerX" constant="-5" id="H5j-sA-RNo"/>
+                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="top" secondItem="n09-yc-oOW" secondAttribute="bottom" constant="18" id="N5m-7J-uJG"/>
                             <constraint firstAttribute="centerX" secondItem="wCU-v5-39r" secondAttribute="centerX" id="YvV-08-VZg"/>
-                            <constraint firstItem="wCU-v5-39r" firstAttribute="top" secondItem="buV-ax-OW8" secondAttribute="bottom" constant="43" id="bUT-Kr-ai6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dFJ-kz-YoP" secondAttribute="trailing" constant="-16" id="gfG-0T-pdS"/>
-                            <constraint firstItem="n09-yc-oOW" firstAttribute="top" secondItem="wCU-v5-39r" secondAttribute="bottom" constant="13" id="iW1-30-HFM"/>
                             <constraint firstItem="dFJ-kz-YoP" firstAttribute="leading" secondItem="mXg-6r-47d" secondAttribute="leadingMargin" constant="-16" id="lzt-wD-KMw"/>
-                            <constraint firstItem="dFJ-kz-YoP" firstAttribute="top" secondItem="n09-yc-oOW" secondAttribute="bottom" constant="19" id="rf2-gk-ihZ"/>
-                            <constraint firstItem="n09-yc-oOW" firstAttribute="top" secondItem="wCU-v5-39r" secondAttribute="bottom" constant="13" id="yHl-TI-Bpq"/>
+                            <constraint firstItem="n09-yc-oOW" firstAttribute="top" secondItem="wCU-v5-39r" secondAttribute="bottom" constant="8" id="um1-He-AM8"/>
+                            <constraint firstItem="wCU-v5-39r" firstAttribute="top" secondItem="buV-ax-OW8" secondAttribute="bottom" constant="12" id="vob-wU-qOz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="新建笔记" id="trT-tr-cQg">
